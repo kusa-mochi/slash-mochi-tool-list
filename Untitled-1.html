@@ -19,20 +19,11 @@
 
         .tool-card-container {
             position: relative;
-            width: 324px;
-            height: 144px;
-            margin: 4px;
+            width: 330px;
+            height: 300px;
+            margin: 1px;
             background-color: #f8f8f8;
             overflow: hidden;
-            transition: height 0.15s ease-out;
-        }
-
-        .tool-card-container:hover {
-            height: 320px;
-        }
-
-        .tool-card-container:hover .image-shouryaku {
-            opacity: 0;
         }
 
         .tool-card-container a {
@@ -44,7 +35,7 @@
         }
 
         .tool-card-container a:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .tool-summary {
@@ -90,17 +81,6 @@
             background-color: rgba(0, 0, 0, 0.6);
         }
 
-        .image-shouryaku {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 20%;
-            background: linear-gradient(to bottom, transparent, white);
-            opacity: 1;
-            transition: opacity 0.15s ease-out;
-        }
-
         .description {
             margin: 0 24px 16px 24px;
             color: white;
@@ -114,9 +94,7 @@
     </style>
 
     <div id="tool-list">
-        <tool-card v-for="data in listData" v-bind:key="data.id" v-bind:tool-name="data.name"
-            v-bind:image-source-path="data.imageSourcePath" v-bind:description="data.description"
-            v-bind:link-to="data.linkTo">
+        <tool-card v-for="data in listData" v-bind="data">
         </tool-card>
     </div>
 
@@ -131,7 +109,6 @@
                     <div class="trim">
                         <img v-bind:src="imageSourcePath"/>
                         <div class="image-mask"></div>
-                        <div class="image-shouryaku"></div>
                     </div>
                     <div class="tool-summary">
                         <div class="tool-name">{{toolName}}</div>
@@ -149,77 +126,77 @@
                 listData: [
                     {
                         id: 1,
-                        name: 'SDGsニュースリスト',
+                        toolName: 'SDGsニュースリスト',
                         imageSourcePath: 'https://slash-mochi.net/wp-content/uploads/2018/11/20181125_001.png',
                         description: 'SDGsのゴール番号でタグ付けしたニュースの一覧をチェックできます。',
                         linkTo: 'https://slash-mochi.net/?p=1169',
                     },
                     {
                         id: 2,
-                        name: 'flexboxのCSSコード生成ツール',
+                        toolName: 'flexboxのCSSコード生成ツール',
                         imageSourcePath: 'https://slash-mochi.net/wp-content/uploads/2019/01/20190102_001.png',
                         description: 'Webデザインの補助ツール。flexboxを使う上で必要なCSSコードがGUIの操作で自動生成できます。GUIの操作と同時にflexbox適用結果のイメージ図が表示されるので参考にできます。',
                         linkTo: 'https://slash-mochi.net/?p=1085',
                     },
                     {
                         id: 3,
-                        name: 'box-shadowのCSSコード生成ツール',
+                        toolName: 'box-shadowのCSSコード生成ツール',
                         imageSourcePath: 'https://slash-mochi.net/wp-content/uploads/2019/07/20190704_001.png',
                         description: 'Webデザインの補助ツール。ボックスシャドウを使う上で必要なCSSコードがGUIの操作で自動生成できます。GUIの操作と同時に影の適用結果のイメージ図が表示されるので参考にできます。',
                         linkTo: 'https://slash-mochi.net/?p=1923',
                     },
                     {
                         id: 4,
-                        name: '抵抗変換太郎',
+                        toolName: '抵抗変換太郎',
                         imageSourcePath: 'https://slash-mochi.net/wp-content/uploads/2018/10/20181028_001.jpg',
                         description: '抵抗のカラーコードと抵抗値を相互に変換するツール。カラーコードを指定したら抵抗値が分かります。抵抗値を指定したらカラーコードが分かります。',
                         linkTo: 'https://slash-mochi.net/?p=748',
                     },
                     {
                         id: 5,
-                        name: 'BMI算四郎',
+                        toolName: 'BMI算四郎',
                         imageSourcePath: 'https://slash-mochi.net/wp-content/uploads/2018/11/20181103.png',
                         description: 'あなたの身長と体重から、BMI値と、あとどのくらい体重が増えたら「肥満」判定になるのか、などが分かるツールです。',
                         linkTo: 'https://slash-mochi.net/?p=754',
                     },
                     {
                         id: 6,
-                        name: 'ローン返済シミュレーター',
+                        toolName: 'ローン返済シミュレーター',
                         imageSourcePath: 'https://slash-mochi.net/wp-content/uploads/2019/01/20190120_001.png',
                         description: '複利で計算するローンを毎月一定額返済するシミュレーションが行えるツールです。返済期間や金利の合計金額・割合などが分かります。',
                         linkTo: 'https://slash-mochi.net/?p=1394',
                     },
                     {
                         id: 7,
-                        name: '生涯家計シミュレーター',
+                        toolName: '生涯家計シミュレーター',
                         imageSourcePath: 'https://slash-mochi.net/wp-content/uploads/2018/09/20180909_001.jpg',
                         description: '生涯に渡る家計のシミュレーションが行えるツールです。シミュレーション結果はファイルに保存でき、後から読み込んで作業を続行することもできます。人生の節目を意識したライフプランニングなどに。オンライン版・オフライン版両方あります。',
                         linkTo: 'https://slash-mochi.net/?p=453',
                     },
                     {
                         id: 8,
-                        name: '“それ”に合う食材ランキング',
+                        toolName: '“それ”に合う食材ランキング',
                         imageSourcePath: 'https://slash-mochi.net/wp-content/uploads/2018/08/20180826_001-1.jpg',
                         description: '入力した食材が、某レシピサイトで何の食材と何回同じレシピ内で使われているのかをランキング形式で表示するツールです。「いつも同じメニューだな・・・」と感じているときなどに活用できます。',
                         linkTo: 'https://slash-mochi.net/?p=223',
                     },
                     {
                         id: 9,
-                        name: '●●日後/前は何月何日何曜日？',
+                        toolName: '●●日後/前は何月何日何曜日？',
                         imageSourcePath: 'https://slash-mochi.net/wp-content/uploads/2019/04/20190418_001.png',
                         description: 'この日から、ちょうど100日後は何月何日かな？試験の日まであと何日かな？そんなちょっとした「知りたい」に対応できるちょこっとアプリです。',
                         linkTo: 'https://slash-mochi.net/?p=1749',
                     },
                     {
                         id: 10,
-                        name: 'Who Lock It',
+                        toolName: 'Who Lock It',
                         imageSourcePath: 'https://i1.wp.com/slash-mochi.net/wp-content/uploads/2019/07/20190715_001.png?ssl=1',
                         description: 'ファイルやフォルダを開いてロックしているプログラムをサクッと特定して表示するツールです。',
                         linkTo: 'https://slash-mochi.net/?p=2011',
                     },
                     {
                         id: 11,
-                        name: '画像半蔵',
+                        toolName: '画像半蔵',
                         imageSourcePath: 'https://slash-mochi.net/wp-content/uploads/2018/08/515016_00.png',
                         description: '画像をデスクトップに直接半透明で表示するだけのツールです。透明度を自由に調節できるので、トレーシングなどに活用できます。',
                         linkTo: 'https://slash-mochi.net/?p=603',
